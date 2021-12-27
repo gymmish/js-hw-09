@@ -118,8 +118,6 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"js/01-color-switcher.js":[function(require,module,exports) {
-function _readOnlyError(name) { throw new TypeError("\"" + name + "\" is read-only"); }
-
 var body = document.querySelector("body");
 var startBtn = document.querySelector("[data-start]");
 var stopBtn = document.querySelector("[data-stop]");
@@ -131,9 +129,9 @@ function getRandomHexColor() {
 var timerId = 0;
 startBtn.addEventListener("click", function () {
   startBtn.disabled = true;
-  setInterval(function () {
+  timerId = setInterval(function () {
     body.style.backgroundColor = getRandomHexColor();
-  }, 1000), _readOnlyError("timerId");
+  }, 1000);
 });
 stopBtn.addEventListener("click", function () {
   stopBtn.disabled = false;
