@@ -118,22 +118,22 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"js/01-color-switcher.js":[function(require,module,exports) {
-var body = document.querySelector("body");
-var startBtn = document.querySelector("[data-start]");
-var stopBtn = document.querySelector("[data-stop]");
+const body = document.querySelector("body");
+const startBtn = document.querySelector("[data-start]");
+const stopBtn = document.querySelector("[data-stop]");
 
 function getRandomHexColor() {
-  return "#".concat(Math.floor(Math.random() * 16777215).toString(16));
+  return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
 
-var timerId = 0;
-startBtn.addEventListener("click", function () {
+let timerId = 0;
+startBtn.addEventListener("click", () => {
   startBtn.disabled = true;
-  timerId = setInterval(function () {
+  timerId = setInterval(() => {
     body.style.backgroundColor = getRandomHexColor();
   }, 1000);
 });
-stopBtn.addEventListener("click", function () {
+stopBtn.addEventListener("click", () => {
   stopBtn.disabled = false;
   clearInterval(timerId);
 });
@@ -165,7 +165,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52797" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64213" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

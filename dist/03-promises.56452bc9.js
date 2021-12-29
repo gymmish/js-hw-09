@@ -119,7 +119,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   return newRequire;
 })({"js/03-promises.js":[function(require,module,exports) {
 function createPromise(position, delay) {
-  var shouldResolve = Math.random() > 0.3;
+  const shouldResolve = Math.random() > 0.3;
 
   if (shouldResolve) {// Fulfill
   } else {// Reject
@@ -153,7 +153,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54086" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64213" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
