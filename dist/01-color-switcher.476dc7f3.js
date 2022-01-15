@@ -126,17 +126,26 @@ function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
 
+function bgColors() {
+  body.style.backgroundColor = getRandomHexColor();
+}
+
 let timerId = 0;
-startBtn.addEventListener('click', () => {
-  startBtn.disabled = true;
-  timerId = setInterval(() => {
-    body.style.backgroundColor = getRandomHexColor();
-  }, 1000);
-});
-stopBtn.addEventListener('click', () => {
+
+function startColor(e) {
+  e.currentTarget.disabled = true;
   stopBtn.disabled = false;
+  timerId = setInterval(bgColors, 1000);
+}
+
+function stopColor(e) {
+  e.currentTarget.disabled = true;
+  startBtn.disabled = false;
   clearInterval(timerId);
-});
+}
+
+startBtn.addEventListener('click', startColor);
+stopBtn.addEventListener('click', stopColor);
 },{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -165,7 +174,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59209" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61604" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

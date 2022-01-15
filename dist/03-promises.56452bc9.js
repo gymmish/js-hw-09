@@ -130,16 +130,15 @@ var _notiflix = _interopRequireDefault(require("notiflix"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const form = document.querySelector('form');
-const firstDel = document.querySelector('[name="delay"]');
-const stepDel = document.querySelector('[name="step"]');
-const amountDel = document.querySelector('[name="amount"]');
+const form = document.querySelector('.form');
+const firstDel = document.querySelector('[name=delay]');
+const stepDel = document.querySelector('[name=step]');
+const amountDel = document.querySelector('[name=amount]');
 
 const createPromise = (position, delay) => {
   return new Promise((resolve, reject) => {
+    const shouldResolve = Math.random() > 0.3;
     setTimeout(() => {
-      const shouldResolve = Math.random() > 0.3;
-
       if (shouldResolve) {
         resolve({
           position,
@@ -157,25 +156,24 @@ const createPromise = (position, delay) => {
 
 const onSubmitIn = e => {
   e.preventDefault();
-  const delay = Number(firstDel.value);
-  const step = Number(stepDel.value);
-  const amount = Number(amountDel.value);
+  let delay = Number(firstDel.value);
+  let step = Number(stepDel.value);
+  let amount = Number(amountDel.value);
 
   for (let i = 0; i < amount; i += 1) {
-    createPromise(i + 1).then(({
+    createPromise(i, delay).then(({
       position,
       delay
     }) => {
-      _notiflix.default.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
+      _notiflix.default.Notify.success(`✅ Fulfilled promise ${position} in ${delay} ms`);
     }).catch(({
       position,
       delay
     }) => {
-      _notiflix.default.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
+      _notiflix.default.Notify.failure(`❌ Rejected promise ${position} in ${delay} ms`);
     });
+    delay += step;
   }
-
-  delay += step;
 };
 
 form.addEventListener('submit', onSubmitIn);
@@ -207,7 +205,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59209" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61604" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
